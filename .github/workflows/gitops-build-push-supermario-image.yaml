@@ -29,5 +29,5 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           git pull
-          docker build -t docker.io/asecurityguru/mariomodified:${{ env.VERSION }} .
-          docker push docker.io/asecurityguru/mariomodified:${{ env.VERSION }}
+          docker build -t docker.io/freeddyy0124/supermariogitopsproject:${{ env.VERSION }} .
+          docker push docker.io/freeddyy0124/supermariogitopsproject:${{ env.VERSION }}
