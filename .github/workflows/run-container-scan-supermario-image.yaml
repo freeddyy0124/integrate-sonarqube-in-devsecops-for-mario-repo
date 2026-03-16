@@ -22,11 +22,11 @@ jobs:
 
       - name: Pull Docker Image
         run: |
-          docker pull docker.io/raghuthesecurityexpert/supermariogitopsproject:${VERSION}
+          docker pull docker.io/freeddyy0124/supermariogitopsproject:${VERSION}
 
       - name: Run Trivy Scan
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: docker.io/raghuthesecurityexpert/supermariogitopsproject:${{ env.VERSION }}
+          image-ref: docker.io/freeddyy0124/supermariogitopsproject:${{ env.VERSION }}
           severity: CRITICAL,HIGH
           exit-code: '0'
