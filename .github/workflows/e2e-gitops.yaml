@@ -1,5 +1,5 @@
 name: "Run SAST, Build and push supermario image, scan image, Update deployment and version txt files"
-
+#changes
 on:
   push:
     branches:
