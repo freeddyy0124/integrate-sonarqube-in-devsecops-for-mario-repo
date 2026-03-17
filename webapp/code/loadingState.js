@@ -127,10 +127,10 @@ Mario.LoadingState.prototype.Draw = function(context) {
     if (!this.ImagesLoaded) {
         var color = parseInt(this.ScreenColor, 10);
         context.fillStyle = "rgb(" + color + "," + color + "," + color + ")";
-        context.fillRect(0, 0, 1640, 1480);
+        context.fillRect(0, 0, 640, 480);
     } else {
         context.fillStyle = "rgb(0, 0, 0)";
-        context.fillRect(0, 0, 1640, 1480);
+        context.fillRect(0, 0, 640, 480);
     }
 };
 

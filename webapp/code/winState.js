@@ -49,7 +49,7 @@ Mario.WinState.prototype.Update = function(delta) {
     if (this.waitTime > 0) {
         this.waitTime -= delta;
     } else {
-        if (Enjine.KeyboardInput.IsKeyDown(Enjine.Keys.Y)) {
+        if (Enjine.KeyboardInput.IsKeyDown(Enjine.Keys.S)) {
             this.wasKeyDown = true;
         }
     }

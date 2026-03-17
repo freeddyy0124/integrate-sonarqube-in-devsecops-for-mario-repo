@@ -488,7 +488,7 @@ Mario.MapState.prototype.Update = function(delta) {
         this.XMarioA = 0;
         this.YMarioA = 0;
         
-        if (this.CanEnterLevel && Enjine.KeyboardInput.IsKeyDown(Enjine.Keys.Y)) {
+        if (this.CanEnterLevel && Enjine.KeyboardInput.IsKeyDown(Enjine.Keys.S)) {
             if (this.Level[x][y] === Mario.MapTile.Level && this.Data[x][y] !== -11) {
                 if (this.Level[x][y] === Mario.MapTile.Level && this.Data[x][y] !== 0 && this.Data[x][y] > -10) {
                     difficulty = this.WorldNumber + 1;
