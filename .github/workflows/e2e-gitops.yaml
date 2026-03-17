@@ -24,7 +24,7 @@ jobs:
         env:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      # If you wish to fail your job when the Quality Gate is red, uncomment the below
+      # If you wish to fail your job when the Quality Gate is red, uncomment the be
       # following lines. This would typically be used to fail a deployment.
       # - name: SonarQube Quality Gate Check
       #   uses: sonarsource/sonarqube-quality-gate-action@master
@@ -47,29 +47,30 @@ jobs:
         run: |
           docker build -t docker.io/freeddyy0124/supermariogitopsproject:${{ env.VERSION }} .
           docker push docker.io/freeddyy0124/supermariogitopsproject:${{ env.VERSION }}
- 
   run_container_image_scan_on_supermario_docker_image:
     runs-on: ubuntu-latest
-    needs: build_push_supermario_docker_image	
- 
+    needs: build_push_supermario_docker_image
+
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
- 
+        uses: actions/checkout@v4
+
       - name: Login to Docker Hub
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-        
+
       - name: Get Docker Image from Docker Hub
         run: |
           docker pull docker.io/freeddyy0124/supermariogitopsproject:${{ env.VERSION }}
-          docker save -o supermariolatestdockerimage.tar docker.io/freeddyy0124/supermariogitopsproject:${{ env.VERSION }}
-     
+          docker save -o "${{ github.workspace }}/supermariolatestdockerimage.tar" docker.io/freeddyy0124/supermariogitopsproject:${{ env.VERSION }}
+          ls -lh "${{ github.workspace }}"
+          test -f "${{ github.workspace }}/supermariolatestdockerimage.tar"
+
       - name: Run Trivy vulnerability scanner in tarball mode
         uses: aquasecurity/trivy-action@master
         with:
-          input: /github/workspace/supermariolatestdockerimage.tar
+          input: ${{ github.workspace }}/supermariolatestdockerimage.tar
+          severity: CRITICAL,HIGH
           exit-code: '0'
-          severity: 'CRITICAL,HIGH'
           
   update_k8s_yaml_version_file_with_latest_image_tag:
     runs-on: ubuntu-latest
