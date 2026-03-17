@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  VERSION: $(( $(cat version.txt) + 1 ))
+  VERSION: $(( $(cat version.txt)))
 
 jobs:
 
